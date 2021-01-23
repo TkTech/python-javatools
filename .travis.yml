@@ -1,19 +1,20 @@
 
 language: python
 
-script: python setup.py test
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install swig
+
+install:
+  - python setup.py install
+
+script:
+  - python setup.py test
 
 python:
   - "2.7"
   - "3.5"
   - "3.6"
   - "3.7"
-
-# needs this for travis to support 3.7
-# matrix:
-#  include:
-#    - python: 3.7
-#      dist: xenial
-#      sudo: true
-
-# The end.
+  - "3.8"
+  - "3.9"
